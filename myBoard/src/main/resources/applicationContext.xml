@@ -18,6 +18,7 @@
 	</bean>
 	<bean id="userDAO" class="yuki.spring.web.user.impl.UserDAO"></bean>
 -->
+	
 	<context:component-scan
 		base-package="yuki.spring.web">
 	</context:component-scan>

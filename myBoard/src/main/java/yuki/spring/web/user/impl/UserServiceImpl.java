@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	private UserDAO userDAO;
+	UserDAO user = new UserDAO(); 
 	@Autowired
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
+	public void setUserDAO() {
+		this.userDAO = user;
 	}
 
 	@Override
