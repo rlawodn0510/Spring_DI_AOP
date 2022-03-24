@@ -10,18 +10,27 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<context:component-scan
-		base-package="tommy.spring.web"></context:component-scan>
-<!--
-	<bean id="userService"
-		class="yuki.spring.web.user.impl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO" />
+		base-package="yuki.spring.web"></context:component-scan>
+	<!-- <bean id="userService" class="yuki.spring.web.user.impl.UserServiceImpl"> 
+		<property name="userDAO" ref="userDAO" /> </bean> <bean id="userDAO" class="yuki.spring.web.user.impl.UserDAO"></bean> -->
+
+
+	<context:property-placeholder
+		location="classpath:config/database.properties" />
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
-	<bean id="userDAO" class="yuki.spring.web.user.impl.UserDAO"></bean>
--->
-	
-	<context:component-scan
-		base-package="yuki.spring.web">
-	</context:component-scan>
+
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 
 	<bean id="log" class="yuki.spring.web.common.LogAdvice"></bean>
 	<aop:config>

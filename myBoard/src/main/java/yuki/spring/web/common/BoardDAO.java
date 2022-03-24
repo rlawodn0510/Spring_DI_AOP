@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import yuki.spring.web.board.BoardVO;
 import yuki.spring.web.common.JDBCUtil;
 
-@Repository("boardDAO")
+//@Repository("boardDAO")
 public class BoardDAO {
    private Connection conn = null;
    private PreparedStatement pstmt = null;
