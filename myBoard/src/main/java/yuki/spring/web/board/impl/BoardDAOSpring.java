@@ -1,3 +1,4 @@
+/*
 package yuki.spring.web.board.impl;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import yuki.spring.web.board.BoardVO;
 
 @Repository
 public class BoardDAOSpring {
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	private final String BOARD_INSERT = "insert into myboard(seq, title, writer, content) "
@@ -43,3 +45,4 @@ public class BoardDAOSpring {
 		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
 	}
 }
+*/

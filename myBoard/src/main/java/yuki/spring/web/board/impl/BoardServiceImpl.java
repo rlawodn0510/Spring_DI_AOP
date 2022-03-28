@@ -1,3 +1,4 @@
+/*
 package yuki.spring.web.board.impl;
 
 import java.util.List;
@@ -39,3 +40,4 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 }
+*/

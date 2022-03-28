@@ -3,10 +3,8 @@
 <%@page import="yuki.spring.web.common.BoardDAO"%>
 <%@ page import="yuki.spring.web.board.BoardVO"%>
 <%@ page import="java.util.List"%>
-<%
-//세션에 저장된 글 목록을 추출
-List<BoardVO> boardList = (List<BoardVO>) session.getAttribute("boardList");
-%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,18 +38,15 @@ List<BoardVO> boardList = (List<BoardVO>) session.getAttribute("boardList");
 			<th>등록일</th>
 			<th>조회수</th>
 		</tr>
-		<%
-		for (BoardVO board : boardList) {
-		%>
-		<tr>
-			<td><%=board.getSeq()%></td>
-			<td><a href="getBoard.do?seq=<%=board.getSeq()%>"><%=board.getTitle()%></a>
-			</td>
-			<td><%=board.getWriter()%></td>
-			<td><%=board.getRegDate()%></td>
-			<td><%=board.getCnt()%></td>
-		</tr>
-		<%} %>
+		<c:forEach var="board" items="${boardList }">
+			<tr>
+				<td>${board.seq }</td>
+				<td><a href="getBoard.do?seq=${board.seq }">${board.title }</a></td>
+				<td>${board.writer }</td>
+				<td>${board.regDate }</td>
+				<td>${board.cnt }</td>
+			</tr>
+		</c:forEach>
 	</table>
 	<br />
 	<a href="insertBoard.jsp">새글 작성</a>
